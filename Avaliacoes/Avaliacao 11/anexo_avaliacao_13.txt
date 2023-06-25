@@ -1,0 +1,18 @@
+1) O que é um proxy reverso?
+Um proxy reverso, também conhecido como servidor proxy reverso, é um tipo de servidor que atua como intermediário entre os clientes da Internet e os servidores de origem. Enquanto um proxy convencional age em nome dos clientes para acessar recursos externos, um proxy reverso age em nome dos servidores de origem para receber solicitações dos clientes.
+
+Em termos simples, quando um cliente envia uma solicitação para um servidor, essa solicitação é direcionada primeiro para o proxy reverso. O proxy reverso, por sua vez, encaminha a solicitação para o servidor apropriado e, em seguida, encaminha a resposta do servidor de volta ao cliente. O cliente não tem conhecimento da existência do servidor de origem, pois toda a comunicação passa pelo proxy reverso.
+
+2) Como se configura um proxy reverso no NGINX?
+Para configurar um proxy reverso no Nginx, você precisa fazer algumas alterações no arquivo de configuração do Nginx. Aqui está um exemplo de como configurar um proxy reverso no Nginx:
+
+Passo 1: Abra o arquivo de configuração principal do Nginx. Dependendo da distribuição do Linux, o arquivo pode estar localizado em diferentes diretórios, mas geralmente é encontrado em /etc/nginx/nginx.conf.
+
+Passo 2: Dentro do arquivo de configuração, você encontrará uma seção chamada "http". Se a seção "http" já estiver presente, basta adicionar o bloco de configuração do proxy reverso dentro dela. Se não estiver presente, precisará adicioná-la.
+As solicitações recebidas por esse domínio serão encaminhadas para o endereço do servidor de origem especificado em "proxy_pass". A diretiva "proxy_set_header" é usada para passar o cabeçalho Host original do cliente para o servidor de origem.
+
+Passo 3: Salve as alterações no arquivo de configuração e reinicie o serviço Nginx para que as alterações entrem em vigor. O comando para reiniciar o serviço pode variar dependendo da distribuição Linux, mas geralmente é algo como "sudo service nginx restart" ou "sudo systemctl restart nginx".
+
+Após configurar o proxy reverso, o Nginx estará encaminhando as solicitações para o servidor de origem especificado. Certifique-se de substituir "seu_dominio.com" pelo seu domínio real e "endereco_do_servidor_de_origem" pelo endereço do servidor de origem correto.
+
+Essas são apenas configurações básicas e há muitas opções adicionais disponíveis para personalizar ainda mais o comportamento do proxy reverso no Nginx. Para configurações mais avançadas e específicas, é recomendável consultar a documentação oficial do Nginx.
